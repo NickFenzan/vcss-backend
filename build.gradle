@@ -1,0 +1,42 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.1.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+jar {
+	baseName = 'vcss'
+	version = '1.0'
+}
+
+springBoot {
+    executable = true
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.hibernate:hibernate-validator')
+	compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '1.5.7'
+	compile "com.fasterxml.jackson.core:jackson-databind"
+	runtime "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
+	runtime('org.springframework.boot:spring-boot-devtools')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
