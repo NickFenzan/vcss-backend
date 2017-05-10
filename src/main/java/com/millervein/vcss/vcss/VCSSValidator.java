@@ -1,11 +1,8 @@
-package com.millervein.vcss.validation;
+package com.millervein.vcss.vcss;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-
-import com.millervein.vcss.core.VCSS;
-import com.millervein.vcss.core.VCSSSymptoms;
 
 @Component
 public class VCSSValidator implements Validator {

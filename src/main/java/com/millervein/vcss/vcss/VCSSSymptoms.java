@@ -1,4 +1,4 @@
-package com.millervein.vcss.core;
+package com.millervein.vcss.vcss;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

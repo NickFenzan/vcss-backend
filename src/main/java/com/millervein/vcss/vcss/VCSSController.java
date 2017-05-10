@@ -1,4 +1,4 @@
-package com.millervein.vcss.core;
+package com.millervein.vcss.vcss;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.millervein.vcss.validation.VCSSValidator;
 import com.millervein.vcss.validation.ValidationException;
 
 @RestController
