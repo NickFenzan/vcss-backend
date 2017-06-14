@@ -44,7 +44,11 @@ public class ClinicalFindings {
 		if(out.charAt(out.length() -1) == ','){
 			out = out.substring(0, out.length() - 1);
 		}
-		out += "-s"+s;
+		if(s > 0){
+			out += "-s";
+		}else{
+			out += "-a";
+		}
 		return out;
 	}
 
