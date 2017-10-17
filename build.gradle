@@ -19,9 +19,9 @@ jar {
 	version = '1.1'
 }
 
-springBoot {
+/*springBoot {
     executable = true
-}
+}*/
 
 sourceCompatibility = 1.8
 
