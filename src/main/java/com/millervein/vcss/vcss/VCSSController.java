@@ -23,7 +23,7 @@ public class VCSSController {
 
 	@Autowired
 	private VCSSRepository vcssRepo;
-	
+
 	@Autowired
 	private VCSSValidator validator;
 
@@ -35,13 +35,13 @@ public class VCSSController {
 		}
 		VCSS existingVCSS = vcssRepo.findByPidAndDos(vcss.pid, vcss.dos);
 		if (existingVCSS != null) {
-			vcssRepo.delete(existingVCSS.id);
+			vcssRepo.delete(existingVCSS);
 		}
 		vcssRepo.saveAndFlush(vcss);
 		return vcss;
 	}
 
-	
+
 	@RequestMapping(value = "/{patientId}/{dos}", method = RequestMethod.GET)
 	public VCSS getVCSS(@PathVariable String patientId, @PathVariable String dos) throws Exception {
 		VCSS vcss = vcssRepo.findByPidAndDos(Integer.valueOf(patientId),
@@ -53,6 +53,6 @@ public class VCSSController {
 		}
 	}
 
-	
-	
+
+
 }

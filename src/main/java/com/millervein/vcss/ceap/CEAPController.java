@@ -23,7 +23,7 @@ public class CEAPController {
 
 	@Autowired
 	private CEAPRepository ceapRepo;
-	
+
 	@Autowired
 	private CEAPValidator validator;
 
@@ -35,13 +35,13 @@ public class CEAPController {
 		}
 		CEAP existingCEAP = ceapRepo.findByPidAndDos(ceap.pid, ceap.dos);
 		if (existingCEAP != null) {
-			ceapRepo.delete(existingCEAP.id);
+			ceapRepo.delete(existingCEAP);
 		}
 		ceapRepo.saveAndFlush(ceap);
 		return ceap;
 	}
 
-	
+
 	@RequestMapping(value = "/{patientId}/{dos}", method = RequestMethod.GET)
 	public CEAP getCEAP(@PathVariable String patientId, @PathVariable String dos) throws Exception {
 		CEAP ceap = ceapRepo.findByPidAndDos(Integer.valueOf(patientId),
@@ -53,6 +53,6 @@ public class CEAPController {
 		}
 	}
 
-	
-	
+
+
 }

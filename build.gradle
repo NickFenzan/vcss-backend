@@ -1,42 +1,36 @@
 buildscript {
-	ext {
-		springBootVersion = '1.5.1.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.3.0.RELEASE")
+    }
 }
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
-jar {
+bootJar {
 	baseName = 'vcss'
-	version = '1.1'
+	version = '1.2'
 }
-
-/*springBoot {
-    executable = true
-}*/
-
-sourceCompatibility = 1.8
 
 repositories {
-	mavenCentral()
+mavenCentral()
 }
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	compile('org.springframework.boot:spring-boot-starter-web')
-	compile('org.hibernate:hibernate-validator')
-	compile group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '1.5.7'
-	compile "com.fasterxml.jackson.core:jackson-databind"
-	runtime "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
-	runtime('org.springframework.boot:spring-boot-devtools')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+	implementation ('org.springframework.boot:spring-boot-starter-data-jpa')
+	implementation ('org.springframework.boot:spring-boot-starter-web')
+	implementation ('org.hibernate.validator:hibernate-validator')
+	implementation group: 'org.mariadb.jdbc', name: 'mariadb-java-client', version: '1.5.7'
+	implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.20'
+	implementation "com.fasterxml.jackson.core:jackson-databind"
+	implementation group: 'commons-logging', name: 'commons-logging', version: '1.2'
+	runtimeOnly ('org.springframework.boot:spring-boot-devtools')
+	testImplementation ('org.springframework.boot:spring-boot-starter-test')
 }

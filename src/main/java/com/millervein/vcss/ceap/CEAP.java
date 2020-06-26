@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -15,7 +17,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
 public class CEAP {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GenericGenerator(name = "native", strategy = "native")
 	public Integer id;
 	public Integer pid;
 	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd")
@@ -25,11 +28,15 @@ public class CEAP {
 	    @AttributeOverride(name="c.c0",column=@Column(name="right_c0")),
 	    @AttributeOverride(name="c.c1",column=@Column(name="right_c1")),
 	    @AttributeOverride(name="c.c2",column=@Column(name="right_c2")),
+			@AttributeOverride(name="c.c2r",column=@Column(name="right_c2r")),
 	    @AttributeOverride(name="c.c3",column=@Column(name="right_c3")),
+			@AttributeOverride(name="c.c4",column=@Column(name="right_c4")),
 	    @AttributeOverride(name="c.c4a",column=@Column(name="right_c4a")),
 	    @AttributeOverride(name="c.c4b",column=@Column(name="right_c4b")),
+			@AttributeOverride(name="c.c4c",column=@Column(name="right_c4c")),
 	    @AttributeOverride(name="c.c5",column=@Column(name="right_c5")),
 	    @AttributeOverride(name="c.c6",column=@Column(name="right_c6")),
+			@AttributeOverride(name="c.c6r",column=@Column(name="right_c6r")),
 	    @AttributeOverride(name="c.s",column=@Column(name="right_cs")),
 	    @AttributeOverride(name="e.c",column=@Column(name="right_ec")),
 	    @AttributeOverride(name="e.p",column=@Column(name="right_ep")),
@@ -47,11 +54,15 @@ public class CEAP {
 		@AttributeOverride(name="c.c0",column=@Column(name="left_c0")),
 	    @AttributeOverride(name="c.c1",column=@Column(name="left_c1")),
 	    @AttributeOverride(name="c.c2",column=@Column(name="left_c2")),
+			@AttributeOverride(name="c.c2r",column=@Column(name="left_c2r")),
 	    @AttributeOverride(name="c.c3",column=@Column(name="left_c3")),
+			@AttributeOverride(name="c.c4",column=@Column(name="left_c4")),
 	    @AttributeOverride(name="c.c4a",column=@Column(name="left_c4a")),
 	    @AttributeOverride(name="c.c4b",column=@Column(name="left_c4b")),
+			@AttributeOverride(name="c.c4c",column=@Column(name="left_c4c")),
 	    @AttributeOverride(name="c.c5",column=@Column(name="left_c5")),
 	    @AttributeOverride(name="c.c6",column=@Column(name="left_c6")),
+			@AttributeOverride(name="c.c6r",column=@Column(name="left_c6r")),
 	    @AttributeOverride(name="c.s",column=@Column(name="left_cs")),
 	    @AttributeOverride(name="e.c",column=@Column(name="left_ec")),
 	    @AttributeOverride(name="e.p",column=@Column(name="left_ep")),
@@ -79,5 +90,5 @@ public class CEAP {
 	public CEAPDetails getLeft() {
 		return left;
 	}
-	
+
 }

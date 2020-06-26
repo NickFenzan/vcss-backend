@@ -8,11 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.GenerationType;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class VCSS {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GenericGenerator(name = "native", strategy = "native")
 	public Integer id;
 	public Integer pid;
 	public LocalDate dos;
@@ -22,7 +25,7 @@ public class VCSS {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "left_id", referencedColumnName = "id", nullable = false)
 	public VCSSSymptoms left;
-	
+
 	@Override
 	public String toString() {
 		return "VCSS [id=" + id + ", pid=" + pid + ", dos=" + dos + ", right=" + right + ", left=" + left + "]";
@@ -48,5 +51,5 @@ public class VCSS {
 		return left;
 	}
 
-	
+
 }
