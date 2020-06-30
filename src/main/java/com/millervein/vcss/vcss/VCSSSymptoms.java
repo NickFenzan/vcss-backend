@@ -3,13 +3,16 @@ package com.millervein.vcss.vcss;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.GenerationType;
+import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class VCSSSymptoms {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GenericGenerator(name = "native", strategy = "native")
 	public Integer id;
 	public Integer pain;
 	public Integer varicoseVeins;
@@ -71,7 +74,7 @@ public class VCSSSymptoms {
 	public Integer getUseOfCompressionTherapy() {
 		return useOfCompressionTherapy;
 	}
-	
-	
+
+
 
 }
